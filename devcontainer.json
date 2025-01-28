@@ -1,0 +1,27 @@
+{
+  "name": "NodeGoat",
+  "dockerFile": "Dockerfile",
+  "service": "web",
+  "workspaceFolder": "/home/node/app",
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "ms-azuretools.vscode-docker"
+  ],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+  },
+  "forwardPorts": [4000],
+  "postCreateCommand": "npm install",
+  "remoteEnv": {
+    "NODE_ENV": "development",
+    "MONGODB_URI": "mongodb://mongo:27017/nodegoat"
+  },
+  "runServices": ["mongo"],
+  "dockerComposeFile": "docker-compose.yml"
+}
